@@ -34,7 +34,7 @@
 执行：
 
 ```powershell
-.\build\windows-debug\pusch_cli.exe bler 20 bler_smoke.csv
+.\build\pusch_cli.exe bler 20 bler_smoke.csv
 ```
 
 20块仅为快速冒烟；正式统计增加样本数并保留置信区间。

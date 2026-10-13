@@ -1,0 +1,18 @@
+cmake_minimum_required(VERSION 3.24)
+# 中文：顶层打开本课时建立独立工程；根工程添加本课时复用已有配置。
+# English: Create a project only when this lesson is the top-level source.
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+  project(pusch_lesson_22 LANGUAGES C CXX)
+  set(PUSCH_STANDALONE_LESSON ON)
+  set(CMAKE_CXX_EXTENSIONS OFF)
+  set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+  option(PUSCH_BUILD_TESTS "Register this lesson's solution test" ON)
+  option(PUSCH_BUILD_EXERCISES "Build this lesson's TODO exercise" ON)
+  option(PUSCH_ENABLE_AVX512 "Enable AVX-512 kernels" OFF)
+  option(PUSCH_ENABLE_SVE "Enable SVE kernels" OFF)
+  if(PUSCH_BUILD_TESTS)
+    enable_testing()
+  endif()
+endif()
+include("${CMAKE_CURRENT_LIST_DIR}/../../cmake/PuschLesson.cmake")
+pusch_add_lesson(22 runtime)

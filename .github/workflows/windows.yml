@@ -1,34 +1,39 @@
-name: Windows UCRT64 reference validation
+name: Windows GCC reference validation
 on: [push, pull_request, workflow_dispatch]
 jobs:
   windows:
     runs-on: windows-latest
+    strategy:
+      matrix:
+        include:
+          - environment: MSYS
+            packages: gcc cmake ninja python
+          - environment: UCRT64
+            packages: >-
+              mingw-w64-ucrt-x86_64-gcc
+              mingw-w64-ucrt-x86_64-cmake
+              mingw-w64-ucrt-x86_64-ninja
+              mingw-w64-ucrt-x86_64-python
     steps:
       - uses: actions/checkout@v4
       - uses: msys2/setup-msys2@v2
         with:
-          msystem: UCRT64
+          msystem: ${{ matrix.environment }}
           update: true
-          install: >-
-            mingw-w64-ucrt-x86_64-gcc
-            mingw-w64-ucrt-x86_64-cmake
-            mingw-w64-ucrt-x86_64-ninja
-      - name: Build and test native Windows binaries
+          install: ${{ matrix.packages }}
+      - name: Root and standalone builds in the job's toolchain
         shell: msys2 {0}
         run: |
-          export UCRT64_ROOT="$(cygpath -m /ucrt64)"
-          cmake --preset windows-debug
-          cmake --build --preset windows-debug -j 2
-          cmake --build --preset windows-debug --target all_exercises -j 2
-          ctest --preset windows-debug
-          cmake --preset windows-release
-          cmake --build --preset windows-release -j 2
-          ctest --preset windows-release
-          cmake --preset windows-avx512
-          cmake --build --preset windows-avx512 -j 2
-          ctest --preset windows-avx512
+          cmake -S . -B build/ci-root -G Ninja -DCMAKE_BUILD_TYPE=Debug
+          cmake --build build/ci-root -j 2
+          cmake --build build/ci-root --target all_exercises -j 2
+          ctest --test-dir build/ci-root --output-on-failure
+          python tools/validate_lesson_builds.py --build-root build/ci-lessons --generator Ninja --check-initial-exercises
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: windows-test-logs
-          path: build/*/Testing/Temporary/LastTest.log
+          name: windows-${{ matrix.environment }}-test-logs
+          path: |
+            build/**/Testing/Temporary/LastTest.log
+            build/**/validation.log
+            docs/results/standalone_builds.json

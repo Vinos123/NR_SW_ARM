@@ -1,0 +1,392 @@
+[
+  {
+    "lesson": "01",
+    "status": "pass",
+    "sources": [
+      "lessons/01/exercise.cc",
+      "lessons/01/main.cc",
+      "lessons/01/solution.cc",
+      "src/runtime.cc"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "02",
+    "status": "pass",
+    "sources": [
+      "lessons/02/exercise.cc",
+      "lessons/02/main.cc",
+      "lessons/02/solution.cc",
+      "src/resource_grid.cc",
+      "src/runtime.cc"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "03",
+    "status": "pass",
+    "sources": [
+      "lessons/03/exercise.cc",
+      "lessons/03/main.cc",
+      "lessons/03/solution.cc",
+      "src/runtime.cc"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "04",
+    "status": "pass",
+    "sources": [
+      "lessons/04/exercise.cc",
+      "lessons/04/main.cc",
+      "lessons/04/solution.cc",
+      "src/random_bits.cc",
+      "src/runtime.cc",
+      "src/sequence.cc"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "05",
+    "status": "pass",
+    "sources": [
+      "lessons/05/exercise.cc",
+      "lessons/05/main.cc",
+      "lessons/05/solution.cc",
+      "src/modulation.cc",
+      "src/random_bits.cc",
+      "src/runtime.cc"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "06",
+    "status": "pass",
+    "sources": [
+      "lessons/06/exercise.cc",
+      "lessons/06/main.cc",
+      "lessons/06/solution.cc",
+      "src/modulation.cc",
+      "src/runtime.cc"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "07",
+    "status": "pass",
+    "sources": [
+      "lessons/07/exercise.cc",
+      "lessons/07/main.cc",
+      "lessons/07/solution.cc",
+      "src/crc.cc",
+      "src/random_bits.cc",
+      "src/runtime.cc"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "08",
+    "status": "pass",
+    "sources": [
+      "lessons/08/exercise.cc",
+      "lessons/08/main.cc",
+      "lessons/08/solution.cc",
+      "src/coding_plan.cc",
+      "src/runtime.cc"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "09",
+    "status": "pass",
+    "sources": [
+      "lessons/09/exercise.cc",
+      "lessons/09/main.cc",
+      "lessons/09/solution.cc",
+      "src/coding_plan.cc",
+      "src/runtime.cc"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "10",
+    "status": "pass",
+    "sources": [
+      "lessons/10/exercise.cc",
+      "lessons/10/main.cc",
+      "lessons/10/solution.cc",
+      "src/coding_plan.cc",
+      "src/crc.cc",
+      "src/ldpc_encoder.cc",
+      "src/random_bits.cc",
+      "src/runtime.cc",
+      "src/segmentation.cc",
+      "third_party/srsran/ldpc/ldpc_graph_impl.cpp",
+      "third_party/srsran/ldpc/ldpc_luts_impl.cpp"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "11",
+    "status": "pass",
+    "sources": [
+      "lessons/11/exercise.cc",
+      "lessons/11/main.cc",
+      "lessons/11/solution.cc",
+      "src/coding_plan.cc",
+      "src/crc.cc",
+      "src/ldpc_encoder.cc",
+      "src/random_bits.cc",
+      "src/rate_matching.cc",
+      "src/runtime.cc",
+      "src/segmentation.cc",
+      "third_party/srsran/ldpc/ldpc_graph_impl.cpp",
+      "third_party/srsran/ldpc/ldpc_luts_impl.cpp"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "12",
+    "status": "pass",
+    "sources": [
+      "lessons/12/exercise.cc",
+      "lessons/12/main.cc",
+      "lessons/12/solution.cc",
+      "src/coding_plan.cc",
+      "src/crc.cc",
+      "src/decoder_adapter.cc",
+      "src/ldpc_encoder.cc",
+      "src/random_bits.cc",
+      "src/rate_matching.cc",
+      "src/runtime.cc",
+      "src/segmentation.cc",
+      "third_party/srsran/ldpc/ldpc_decoder_generic.cpp",
+      "third_party/srsran/ldpc/ldpc_decoder_impl.cpp",
+      "third_party/srsran/ldpc/ldpc_graph_impl.cpp",
+      "third_party/srsran/ldpc/ldpc_luts_impl.cpp",
+      "third_party/srsran/log_likelihood_ratio.cpp"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "13",
+    "status": "pass",
+    "sources": [
+      "lessons/13/exercise.cc",
+      "lessons/13/main.cc",
+      "lessons/13/solution.cc",
+      "src/allocation.cc",
+      "src/runtime.cc"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "14",
+    "status": "pass",
+    "sources": [
+      "lessons/14/exercise.cc",
+      "lessons/14/main.cc",
+      "lessons/14/solution.cc",
+      "src/allocation.cc",
+      "src/dmrs.cc",
+      "src/modulation.cc",
+      "src/random_bits.cc",
+      "src/resource_grid.cc",
+      "src/resource_mapping.cc",
+      "src/runtime.cc",
+      "src/sequence.cc"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "15",
+    "status": "pass",
+    "sources": [
+      "lessons/15/exercise.cc",
+      "lessons/15/main.cc",
+      "lessons/15/solution.cc",
+      "src/allocation.cc",
+      "src/dmrs.cc",
+      "src/fft.cc",
+      "src/modulation.cc",
+      "src/ofdm.cc",
+      "src/random_bits.cc",
+      "src/resource_grid.cc",
+      "src/resource_mapping.cc",
+      "src/runtime.cc",
+      "src/sequence.cc",
+      "third_party/kissfft/kiss_fft.c"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "16",
+    "status": "pass",
+    "sources": [
+      "lessons/16/exercise.cc",
+      "lessons/16/main.cc",
+      "lessons/16/solution.cc",
+      "src/runtime.cc"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "17",
+    "status": "pass",
+    "sources": [
+      "lessons/17/exercise.cc",
+      "lessons/17/main.cc",
+      "lessons/17/solution.cc",
+      "src/allocation.cc",
+      "src/channel_estimation.cc",
+      "src/dmrs.cc",
+      "src/modulation.cc",
+      "src/random_bits.cc",
+      "src/resource_grid.cc",
+      "src/resource_mapping.cc",
+      "src/runtime.cc",
+      "src/sequence.cc"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "18",
+    "status": "pass",
+    "sources": [
+      "lessons/18/exercise.cc",
+      "lessons/18/main.cc",
+      "lessons/18/solution.cc",
+      "src/allocation.cc",
+      "src/channel_estimation.cc",
+      "src/channel_model.cc",
+      "src/coding_plan.cc",
+      "src/crc.cc",
+      "src/decoder_adapter.cc",
+      "src/dmrs.cc",
+      "src/fft.cc",
+      "src/ldpc_encoder.cc",
+      "src/link.cc",
+      "src/modulation.cc",
+      "src/noise.cc",
+      "src/ofdm.cc",
+      "src/random_bits.cc",
+      "src/rate_matching.cc",
+      "src/resource_grid.cc",
+      "src/resource_mapping.cc",
+      "src/runtime.cc",
+      "src/segmentation.cc",
+      "src/sequence.cc",
+      "third_party/kissfft/kiss_fft.c",
+      "third_party/srsran/ldpc/ldpc_decoder_generic.cpp",
+      "third_party/srsran/ldpc/ldpc_decoder_impl.cpp",
+      "third_party/srsran/ldpc/ldpc_graph_impl.cpp",
+      "third_party/srsran/ldpc/ldpc_luts_impl.cpp",
+      "third_party/srsran/log_likelihood_ratio.cpp"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "19",
+    "status": "pass",
+    "sources": [
+      "lessons/19/exercise.cc",
+      "lessons/19/main.cc",
+      "lessons/19/solution.cc",
+      "src/runtime.cc"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "20",
+    "status": "pass",
+    "sources": [
+      "lessons/20/exercise.cc",
+      "lessons/20/main.cc",
+      "lessons/20/solution.cc",
+      "src/fft.cc",
+      "src/modulation.cc",
+      "src/random_bits.cc",
+      "src/runtime.cc",
+      "third_party/kissfft/kiss_fft.c"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "21",
+    "status": "pass",
+    "sources": [
+      "lessons/21/exercise.cc",
+      "lessons/21/main.cc",
+      "lessons/21/solution.cc",
+      "src/allocation.cc",
+      "src/channel_estimation.cc",
+      "src/channel_model.cc",
+      "src/coding_plan.cc",
+      "src/crc.cc",
+      "src/decoder_adapter.cc",
+      "src/dmrs.cc",
+      "src/fft.cc",
+      "src/ldpc_encoder.cc",
+      "src/link.cc",
+      "src/modulation.cc",
+      "src/noise.cc",
+      "src/ofdm.cc",
+      "src/power_control.cc",
+      "src/random_bits.cc",
+      "src/rate_matching.cc",
+      "src/resource_grid.cc",
+      "src/resource_mapping.cc",
+      "src/runtime.cc",
+      "src/segmentation.cc",
+      "src/sequence.cc",
+      "third_party/kissfft/kiss_fft.c",
+      "third_party/srsran/ldpc/ldpc_decoder_generic.cpp",
+      "third_party/srsran/ldpc/ldpc_decoder_impl.cpp",
+      "third_party/srsran/ldpc/ldpc_graph_impl.cpp",
+      "third_party/srsran/ldpc/ldpc_luts_impl.cpp",
+      "third_party/srsran/log_likelihood_ratio.cpp"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "22",
+    "status": "pass",
+    "sources": [
+      "lessons/22/exercise.cc",
+      "lessons/22/main.cc",
+      "lessons/22/solution.cc",
+      "src/runtime.cc"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "23",
+    "status": "skip",
+    "sources": [
+      "lessons/23/exercise.cc",
+      "lessons/23/kernel_exercise.cc",
+      "lessons/23/kernel_solution.cc",
+      "lessons/23/main.cc",
+      "lessons/23/solution.cc",
+      "src/qpsk_scalar.cc",
+      "src/runtime.cc",
+      "src/simd.cc"
+    ],
+    "generator": "Ninja"
+  },
+  {
+    "lesson": "24",
+    "status": "skip",
+    "sources": [
+      "lessons/24/exercise.cc",
+      "lessons/24/kernel_exercise.cc",
+      "lessons/24/kernel_solution.cc",
+      "lessons/24/main.cc",
+      "lessons/24/solution.cc",
+      "src/qpsk_scalar.cc",
+      "src/runtime.cc",
+      "src/simd.cc"
+    ],
+    "generator": "Ninja"
+  }
+]

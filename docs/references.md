@@ -22,7 +22,7 @@ PUSCH是UE发送、gNB接收；分段边界使用B≤Kcb；DFT扩频不等于最
 - [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
 - [VS Code GCC on Windows](https://code.visualstudio.com/docs/cpp/config-mingw)
 - [MSYS2环境](https://www.msys2.org/docs/environments/)
-- [CMake Presets](https://cmake.org/cmake/help/latest/manual/cmake-presets.7.html)
+- [CMake Tools运行与调试](https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/debug-launch.md)
 - [CLion工具链](https://www.jetbrains.com/help/clion/how-to-create-toolchain-in-clion.html)
 - [Intel Intrinsics Guide](https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html)
 - [Arm ACLE](https://arm-software.github.io/acle/main/acle.html)

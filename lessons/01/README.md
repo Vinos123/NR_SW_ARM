@@ -35,22 +35,30 @@ int CountResourceElements(int prbs);
 
 ## 构建、运行与预期结果
 
-先按[Windows环境说明](../../docs/windows_setup.md)配置UCRT64。仓库根目录PowerShell：
+先按[Windows环境说明](../../docs/windows_setup.md)配置现有工具链。
+**在VS Code直接打开本课目录**，选择当前GCC Kit，执行CMake: Configure。
+选择Build目标`lesson_01_solution`或`lesson_01_exercise`，再选择相同Launch目标运行或调试。
+不需要先构建根工程，不使用“编译当前文件”。
+
+完成Configure后，可在本课目录的PowerShell终端运行（build为实际构建目录）：
 
 ```powershell
-cmake --preset windows-debug
-cmake --build --preset windows-debug --target lesson_01_solution lesson_01_exercise
-.\build\windows-debug\lesson_01_solution.exe
-.\build\windows-debug\lesson_01_exercise.exe
+cmake --build build --target lesson_01_solution lesson_01_exercise
+ctest --test-dir build --output-on-failure
+.\build\lesson_01_solution.exe
+.\build\lesson_01_exercise.exe
 ```
 
-参考答案通过时输出`PASS lesson 01`，退出码0。练习初始输出`NOT IMPLEMENTED`并返回1；完成后应满足相同验收。SIMD课在未启用或不支持的机器上输出SKIP，返回77，不算完成硬件验证。
-查看[main.cc](main.cc)中的固定输入与断言；不要删除断言来使程序通过。
+单配置构建使用上述exe路径；CMake Tools Run/Debug会自动识别其他生成器的实际输出目录。
+答案通过时输出`PASS lesson 01`，退出码0。骨架初始输出`NOT IMPLEMENTED`并返回1。
+SIMD课未启用或硬件不支持时输出SKIP，返回77。
+查看[main.cc](main.cc)的固定输入与断言，不要删除断言来使程序通过。
+本课的必要模块见[CMakeLists.txt](CMakeLists.txt)末尾；只编译这些模块及其传递依赖。
 
 ## 对照答案与工程实现
 
 先独立写，再读[solution.cc](solution.cc)。完整模块：[参考实现](solution.cc)。
-主工程参考测试和独立向量位于[tests](../../tests)，运行`ctest --preset windows-debug`。
+主工程参考测试和独立向量位于[tests](../../tests)，根工程Configure后运行`ctest --test-dir build --output-on-failure`。
 普通课程函数的参考实现与练习分开链接；可复用已完成前课模块，不需要重写依赖。
 第23/24课还需跟写对应`src/qpsk_*.cc`的指令内核，并按[优化指南](../../docs/simd.md)启用。
 

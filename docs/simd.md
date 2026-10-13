@@ -1,61 +1,55 @@
-# 第8周：最后再做AVX-512与SVE
+# 第8周：AVX-512与SVE
 
-先完成第1–21课。优化对象仅为QPSK软解调内核，布局是交织I/Q float数组。
-公式：`LLR = 2*sqrt(2)*component/N0`，正值偏向0，N0为复噪声方差。
+先完成第1–21课。数学定义、内核布局和验收标准保持不变。
+不再提供SIMD构建预设，通过普通CMake选项启用相应内核。
 
-## AVX-512：Windows x86-64
+## AVX-512：第23课
+
+在VS Code打开`lessons/23`，选择现有x86-64 GCC工具链和Release构建类型。
+在本机CMake配置参数中添加`-DPUSCH_ENABLE_AVX512=ON`，重新Configure。
+选择`lesson_23_solution`或`lesson_23_exercise`构建运行。
+也可以在配置好当前工具链的终端显式配置新的目录：
 
 ```powershell
-cmake --preset windows-release
-cmake --build --preset windows-release
-.\build\windows-release\pusch_cli.exe bench scalar
-cmake --preset windows-avx512
-cmake --build --preset windows-avx512
-ctest --preset windows-avx512
-.\build\windows-avx512\pusch_cli.exe bench scalar
-.\build\windows-avx512\pusch_cli.exe bench avx512
+cmake -S lessons/23 -B build/lesson23 -DCMAKE_BUILD_TYPE=Release -DPUSCH_ENABLE_AVX512=ON
+cmake --build build/lesson23
+ctest --test-dir build/lesson23 --output-on-failure
 ```
 
-比较同一个Release构建中的scalar和avx512。`src/qpsk_avx512.cc`单独带
-`-mavx512f`，分派和其他协议代码不带此选项。GCC CPU检测包含CPU/OS状态支持。
-不支持时返回77并打印SKIP，不能记录为性能验证通过。
+终端首次配置沿用当前环境可用的生成器；若与你的VS Code生成器不同，
+在IDE中Configure后仅执行build/test命令即可，不要混用同一个缓存目录。
+只有指令内核源码带`-mavx512f`，能力检测代码不带高级指令选项。
+未启用或硬件不支持时明确返回77，不能算运行验证通过。
 
-## SVE：ARM Linux服务器
+## SVE：第24课
 
-将同一源码目录同步到服务器，安装GCC/G++（建议13+）、CMake和Ninja。
-无需复制Windows的build目录。确认`lscpu`及`/proc/cpuinfo`，再构建：
+将仓库同步到ARM Linux服务器，不复制Windows的build目录：
 
 ```bash
-cmake --preset linux-sve
-cmake --build --preset linux-sve -j 4
-ctest --preset linux-sve
-./build/linux-sve/pusch_cli bench scalar
-./build/linux-sve/pusch_cli bench sve
+cmake -S lessons/24 -B build/lesson24 -DCMAKE_BUILD_TYPE=Release -DPUSCH_ENABLE_SVE=ON
+cmake --build build/lesson24 -j 4
+ctest --test-dir build/lesson24 --output-on-failure
 ```
 
-只有SVE内核目标启用`-march=armv8-a+sve`，运行前用Linux HWCAP检查。
-Mac ARM支持NEON不代表支持SVE，不在Mac上运行SVE实验。
+仅SVE内核启用`-march=armv8-a+sve`。运行前使用Linux HWCAP检查。
+Mac ARM的NEON不能替代SVE硬件验证。
 
-## 跟写内核
+## 跟写与基准
 
-先在第23/24课补全分派接口，再完成本课`kernel_exercise.cc`中的实际内核。
-`kernel_solution.cc`为独立答案，不会链接到练习目标。
-AVX-512需要广播、未对齐加载、乘法、存储以及尾部掩码。
-SVE使用`svcntw`、`svwhilelt_b32`、`svld1_f32`、`svmul_n_f32_x`、`svst1_f32`。
-修改后运行全部SIMD测试，尤其0、1、15、16、17、33、257长度和偏移指针。
+每课先完成exercise.cc中的分派，再完成kernel_exercise.cc。
+对应kernel_solution.cc独立链接到答案目标，不会被练习目标调用。
+AVX-512学习广播、加载、乘法、存储和尾部掩码；SVE学习运行时向量长度及谓词。
+覆盖0、1、15、16、17、33、257元素和未对齐指针。
 
-## 性能报告模板
+完整基准入口位于根工程pusch_cli。使用同一工具链、Release模式和相同SIMD选项配置根工程，
+然后从其实际输出目录执行：
 
-| 字段 | 记录 |
-|---|---|
-| CPU型号/核心/频率模式 | 实际机器信息 |
-| OS/编译器/构建类型 | Release；保留编译选项 |
-| SVE向量长度或AVX-512能力 | 实际硬件值 |
-| 样本数与循环次数 | 默认65539 float，预热100次，7轮×1000次 |
-| 标量ns/float | 实测中位数 |
-| 优化ns/float | 实测中位数 |
-| 相对加速 | 同机标量时间/优化时间 |
-| 正确性 | 与标量、通用解调器的容差结果 |
+```powershell
+.\build\pusch_cli.exe bench scalar
+.\build\pusch_cli.exe bench avx512
+```
 
-小内核可能受内存、分派和调用开销限制，不预设加速倍数。不同机器的绝对耗时
-不能单独证明某一种指令集更好。每次测量保留原始终端输出。
+ARM服务器运行对应的`bench scalar`、`bench sve`。
+记录CPU/OS/编译器/构建选项、向量长度、正确性和同机相对加速。
+默认基准65539 float、预热100次、7轮×1000次，取中位数。
+不同机器绝对耗时不用于单独判断指令集优劣。

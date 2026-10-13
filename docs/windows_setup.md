@@ -1,102 +1,101 @@
-# Windows 11：VS Code与CLion共用工程
+# Windows 11：使用VS Code当前工具链
 
-目标是生成Windows原生`.exe`。不使用WSL，不生成Visual Studio解决方案。
-本教程默认x86-64 Windows；SVE课在ARM Linux服务器运行。
+工程使用普通CMake，没有构建预设，也没有编译器、生成器或安装路径绑定。
+使用你现有的MSYS/MSYS2环境中、由VS Code检测到或已经选中的GCC工具链即可。
+CMake至少3.24，GCC需要支持C++20；CMake Tools配置阶段会检查编译能力。
 
-## 1. 安装UCRT64工具
+## 1. 打开一个课目录
 
-安装[MSYS2](https://www.msys2.org/)，打开 **MSYS2 UCRT64** 终端。
-以下两步只有安装阶段在该终端执行，后续统一PowerShell。
-
-```bash
-pacman -Syu
-# 如果要求退出终端，关闭后重新打开UCRT64并再次执行更新。
-pacman -S --needed mingw-w64-ucrt-x86_64-gcc \
-  mingw-w64-ucrt-x86_64-gdb mingw-w64-ucrt-x86_64-cmake \
-  mingw-w64-ucrt-x86_64-ninja mingw-w64-ucrt-x86_64-clang-tools-extra
-```
-
-编译器需要完整C++20支持，建议GCC 13及以上；CMake至少3.24。
-GoogleTest 1.15.2、KissFFT 131.1.0、srsRAN固定提交及fmt 11.1.3已随工程提供，
-构建不需要在线下载第三方库。不要混入MSYS环境的`/usr/bin/g++`或其他CRT的库。
-
-## 2. 在PowerShell声明工具位置
-
-把示例路径改为你实际安装位置。这是本机设置，不写入共享工程。
+例如在VS Code选择“打开文件夹”，打开仓库内的`lessons/04`。
+也可在已配置环境的终端运行：
 
 ```powershell
-$env:UCRT64_ROOT = 'C:\msys64\ucrt64'
-$env:Path = "$env:UCRT64_ROOT\bin;$env:Path"
-g++ --version
-cmake --version
-ninja --version
-gdb --version
+code .\lessons\04
 ```
 
-本终端关闭后设置失效。如希望持久化，在Windows用户环境变量中设置
-`UCRT64_ROOT`并把其`bin`目录加入用户Path，再重启VS Code/CLion。
-从当前终端执行`code .`时，VS Code将继承这些变量。
-运行`.exe`也需要此Path，以找到同工具链的运行时DLL。
+保持课目录位于完整仓库内：它会引用`../../include`、公共源码和必要第三方依赖。
+每课有自己的`CMakeLists.txt`，无需先配置根工程，也不依赖前课的build目录。
 
-## 3. 首次构建与自检
+## 2. 选择工具链并配置
 
-在项目根目录：
+安装推荐的C/C++、CMake Tools扩展。使用 **CMake: Select a Kit** 选择当前环境检测到的GCC工具链；已有正确选择时继续使用它。
+选择Debug构建类型，执行 **CMake: Configure**。
+
+“MSYS”是环境名称，具体编译器以CMake Tools显示的gcc/g++路径为准。
+工程不替你切换到UCRT64或指定Ninja；CMake Tools按照当前工具链及可用工具选择生成器。
+程序运行也使用同一开发环境，确保该工具链的运行时DLL可被找到。
+
+## 3. 选择目标后构建
+
+在CMake Tools的Build目标中选择：
+
+- `lesson_04_solution`：参考答案。
+- `lesson_04_exercise`：需要你实现的练习。
+
+执行Build，只编译该目标及其必要模块。独立课工程的默认构建也会生成这两个目标。
+初始练习可以编译，但运行会输出`NOT IMPLEMENTED`并返回1，这是预期行为。
+
+**不要使用“编译当前文件”或Code Runner直接编译main.cc。** 一课通常包含多个源码文件，
+应由CMake完成编译和链接。修改exercise.cc后仍构建exercise目标。
+
+## 4. 运行和调试
+
+在CMake Tools的Launch目标中选择同一个答案或练习目标：
+
+- Run按钮运行当前目标。
+- Debug按钮或 **CMake: Debug** 启动调试。
+- 在该课solution.cc或exercise.cc设置断点。
+
+CMake Tools从已配置的工程中识别程序路径和调试器，不需要固定的launch.json。
+构建目标和Launch目标是两个选择，切换答案/练习时同时确认，避免运行了旧目标。
+
+这一机制见[CMake Tools官方运行/调试说明](https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/debug-launch.md)。
+
+## 5. 在终端使用已配置工程
+
+以下命令以CMake Tools常用的`build`目录为例；若IDE选择了其他目录，替换为实际路径。
+执行前已在VS Code完成Configure，因此无需在终端重新指定编译器或生成器。
 
 ```powershell
-cmake --preset windows-debug
-cmake --build --preset windows-debug --parallel 4
-ctest --preset windows-debug
-.\build\windows-debug\pusch_cli.exe link inf
+cmake --build build --target lesson_04_solution lesson_04_exercise
+ctest --test-dir build --output-on-failure
+.\build\lesson_04_solution.exe
+.\build\lesson_04_exercise.exe
 ```
 
-默认输出：`TBS=576 bit_errors=0 CRC=PASS`。
-SIMD相关测试可能显示Skipped，这不影响前7周。
+单配置GCC构建的exe通常位于build目录；多配置生成器可能放在Debug等子目录。
+CMake Tools的Run/Debug会使用实际路径，无需猜测。
+CTest仅运行参考答案；它不会把未完成练习计入通过率。
 
-每课有两个独立目标：
+## 6. 打开根工程
+
+需要完整链路和全部测试时，打开仓库根目录，使用相同的Configure流程。
+根工程仍能选择单课目标，只编译该课的模块，例如：
 
 ```powershell
-cmake --build --preset windows-debug --target lesson_04_solution lesson_04_exercise
-.\build\windows-debug\lesson_04_solution.exe
-.\build\windows-debug\lesson_04_exercise.exe
+cmake --build build --target lesson_04_solution
 ```
 
-答案应通过；初始练习会输出`NOT IMPLEMENTED`，退出码1。
-**练习默认不加入通过率统计，也不默认构建**，不会因TODO而破坏参考工程。
-若只想检查所有骨架能否编译：
+根工程中该课程序通常位于`build/lessons/04`；建议仍使用CMake Tools Run/Debug。
+完整链路目标为`pusch_cli`，默认不传参数即可运行无噪声链路。
+要编译全部练习骨架，选择`all_exercises`；它不会执行未完成的练习。
 
-```powershell
-cmake --build --preset windows-debug --target all_exercises
-```
+## 7. CLion
 
-## 4. VS Code
+打开根目录或某一课目录中的CMakeLists.txt，选择你现有的GCC工具链。
+选择相应的lesson solution/exercise运行配置。根工程和独立课工程使用同一套源码与依赖声明，
+不需要单独维护CLion项目文件。
 
-打开根目录文件夹，安装工程推荐的C/C++、CMake Tools扩展。
-在CMake Tools选择`windows-debug`配置预设。`Ctrl+Shift+B`运行构建任务。
-运行“PUSCH link (GDB)”调试配置，在`src/link.cc`中设置断点。
+## 8. 迁移与排错
 
-推荐第一次调试观察：`tb.size()`、`plan`、`lengths`、`coded.size()`。
-需要调试某课时，复制launch配置，把program改为该课的exe名。
-源码使用UTF-8；如PowerShell中文字显示异常，先检查终端字体及UTF-8配置，
-不要把源文件保存成ANSI。控制台固定验收文本使用ASCII，避免编码影响判断。
-
-## 5. CLion
-
-打开同一根目录的`CMakeLists.txt`。在Toolchains添加MinGW工具链，位置选择
-`UCRT64_ROOT`，C/C++编译器和GDB均来自该目录的`bin`。
-使用Ninja生成器，导入`windows-debug`/`windows-release`预设。
-若CLion版本无法自动导入，在CMake profile设置同样的构建类型与目录。
-不使用另一个捆绑MinGW来构建共享build目录；更换编译器时新建构建目录。
-
-## 6. 排错表
-
-| 症状 | 检查方法 |
+| 情况 | 处理 |
 |---|---|
-| 找不到g++或Ninja | `Get-Command g++`；检查UCRT64_ROOT和Path |
-| 找不到运行时DLL | 从已配置Path的终端启动exe或IDE |
-| CMake编译器缓存错误 | 更换构建目录，避免混用不同工具链缓存 |
-| 断点空心或变量优化掉 | 选择Debug预设，确认运行的是同目录程序 |
-| `NOT IMPLEMENTED` | 正在运行练习骨架，补TODO或先运行solution |
-| `SKIP`/退出码77 | 指令内核未编译或机器不支持，见SIMD指南 |
+| 仍提示旧预设或旧编译器 | 重新打开文件夹，使用CMake Tools清理缓存并重新Configure |
+| 更换编译器或生成器 | 使用新build目录；不要复用旧工具链的CMakeCache |
+| 已构建练习却运行答案 | 同时检查Build目标与Launch目标 |
+| 程序找不到DLL | 从当前MSYS开发环境启动VS Code，检查其继承的Path |
+| 单文件编译出现undefined reference | 改用CMake目标构建 |
+| `NOT IMPLEMENTED` | 练习尚未实现，按TODO补全 |
+| SIMD输出SKIP | 尚未启用该内核或缺少硬件，见优化指南 |
 
-当前交付机器是macOS；Windows CI配置已提供，但本地验证状态以
-[验证记录](validation.md)为准。配置存在不等于已在Windows实际跑过。
+实际平台验证状态见[验证记录](validation.md)。当前交付环境是macOS，Windows IDE操作仍需在你的电脑上确认。

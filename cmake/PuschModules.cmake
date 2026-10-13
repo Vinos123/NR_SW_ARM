@@ -1,0 +1,116 @@
+include_guard(GLOBAL)
+get_filename_component(PUSCH_SOURCE_ROOT "${CMAKE_CURRENT_LIST_DIR}/.." ABSOLUTE)
+
+# 中文：按需创建模块，独立课程只配置和编译自己的依赖。
+# English: Create modules on demand; standalone lessons build only their deps.
+function(pusch_require_module name)
+  if(TARGET pusch_${name})
+    return()
+  endif()
+  set(deps runtime)
+  set(source "src/${name}.cc")
+  if(name STREQUAL "runtime")
+    set(deps "")
+  elseif(name STREQUAL "segmentation")
+    set(deps runtime crc)
+  elseif(name STREQUAL "ldpc_encoder")
+    set(deps runtime srsran_graph)
+  elseif(name STREQUAL "dmrs")
+    set(deps runtime sequence modulation)
+  elseif(name STREQUAL "resource_mapping")
+    set(deps runtime allocation resource_grid dmrs)
+  elseif(name STREQUAL "fft")
+    set(deps runtime kissfft)
+  elseif(name STREQUAL "ofdm")
+    set(deps runtime fft resource_grid)
+  elseif(name STREQUAL "channel_estimation")
+    set(deps runtime dmrs resource_grid)
+  elseif(name STREQUAL "decoder_adapter")
+    set(deps runtime srsran_decoder)
+  elseif(name STREQUAL "simd")
+    set(deps runtime qpsk_scalar)
+  elseif(name STREQUAL "link")
+    set(deps runtime random_bits allocation coding_plan segmentation
+        ldpc_encoder rate_matching sequence modulation noise ofdm
+        resource_mapping channel_model channel_estimation decoder_adapter)
+  elseif(name STREQUAL "kissfft")
+    add_library(pusch_kissfft STATIC EXCLUDE_FROM_ALL
+      "${PUSCH_SOURCE_ROOT}/third_party/kissfft/kiss_fft.c")
+    target_include_directories(pusch_kissfft SYSTEM PUBLIC
+      "${PUSCH_SOURCE_ROOT}/third_party/kissfft")
+    return()
+  elseif(name STREQUAL "srsran_graph")
+    add_library(pusch_srsran_graph STATIC EXCLUDE_FROM_ALL
+      "${PUSCH_SOURCE_ROOT}/third_party/srsran/ldpc/ldpc_graph_impl.cpp"
+      "${PUSCH_SOURCE_ROOT}/third_party/srsran/ldpc/ldpc_luts_impl.cpp")
+    target_include_directories(pusch_srsran_graph SYSTEM PUBLIC
+      "${PUSCH_SOURCE_ROOT}/third_party/srsran/include"
+      "${PUSCH_SOURCE_ROOT}/third_party/srsran/ldpc"
+      "${PUSCH_SOURCE_ROOT}/third_party/srsran/fmt")
+    target_compile_features(pusch_srsran_graph PUBLIC cxx_std_20)
+    target_compile_definitions(pusch_srsran_graph PUBLIC FMT_HEADER_ONLY)
+    return()
+  elseif(name STREQUAL "srsran_decoder")
+    pusch_require_module(srsran_graph)
+    add_library(pusch_srsran_decoder STATIC EXCLUDE_FROM_ALL
+      "${PUSCH_SOURCE_ROOT}/third_party/srsran/ldpc/ldpc_decoder_generic.cpp"
+      "${PUSCH_SOURCE_ROOT}/third_party/srsran/ldpc/ldpc_decoder_impl.cpp"
+      "${PUSCH_SOURCE_ROOT}/third_party/srsran/log_likelihood_ratio.cpp")
+    target_link_libraries(pusch_srsran_decoder PUBLIC pusch_srsran_graph)
+    return()
+  elseif(NOT name MATCHES "^(random_bits|sequence|modulation|noise|crc|coding_plan|rate_matching|allocation|resource_grid|channel_model|equalization|power_control|qpsk_scalar)$")
+    message(FATAL_ERROR "Unknown PUSCH module: ${name}")
+  endif()
+
+  foreach(dep IN LISTS deps)
+    pusch_require_module(${dep})
+  endforeach()
+  add_library(pusch_${name} STATIC EXCLUDE_FROM_ALL "${PUSCH_SOURCE_ROOT}/${source}")
+  target_include_directories(pusch_${name} PUBLIC "${PUSCH_SOURCE_ROOT}/include")
+  target_compile_features(pusch_${name} PUBLIC cxx_std_20)
+  set_target_properties(pusch_${name} PROPERTIES CXX_EXTENSIONS OFF)
+  if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(pusch_${name} PRIVATE -Wall -Wextra -Wpedantic)
+  endif()
+  foreach(dep IN LISTS deps)
+    target_link_libraries(pusch_${name} PUBLIC pusch_${dep})
+  endforeach()
+  if(name STREQUAL "simd")
+    pusch_add_simd_sources(pusch_simd)
+  endif()
+endfunction()
+
+function(pusch_link_modules target)
+  foreach(name IN LISTS ARGN)
+    pusch_require_module(${name})
+    target_link_libraries(${target} PRIVATE pusch_${name})
+  endforeach()
+endfunction()
+
+function(pusch_check_simd_arch option)
+  if(option STREQUAL "PUSCH_ENABLE_AVX512")
+    if(NOT CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64|AMD64|amd64")
+      message(FATAL_ERROR "AVX-512 requires x86-64")
+    endif()
+  elseif(NOT CMAKE_SYSTEM_NAME STREQUAL "Linux" OR
+         NOT CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64|arm64")
+    message(FATAL_ERROR "SVE requires ARM64 Linux")
+  endif()
+endfunction()
+
+function(pusch_add_simd_sources target)
+  if(PUSCH_ENABLE_AVX512)
+    pusch_check_simd_arch(PUSCH_ENABLE_AVX512)
+    target_sources(${target} PRIVATE "${PUSCH_SOURCE_ROOT}/src/qpsk_avx512.cc")
+    set_source_files_properties("${PUSCH_SOURCE_ROOT}/src/qpsk_avx512.cc"
+      PROPERTIES COMPILE_OPTIONS "-mavx512f")
+    target_compile_definitions(${target} PRIVATE PUSCH_HAS_AVX512)
+  endif()
+  if(PUSCH_ENABLE_SVE)
+    pusch_check_simd_arch(PUSCH_ENABLE_SVE)
+    target_sources(${target} PRIVATE "${PUSCH_SOURCE_ROOT}/src/qpsk_sve.cc")
+    set_source_files_properties("${PUSCH_SOURCE_ROOT}/src/qpsk_sve.cc"
+      PROPERTIES COMPILE_OPTIONS "-march=armv8-a+sve")
+    target_compile_definitions(${target} PRIVATE PUSCH_HAS_SVE)
+  endif()
+endfunction()

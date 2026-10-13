@@ -1,8 +1,9 @@
 build/
-CMakeUserPresets.json
 .idea/
 *.csv
 !tests/data/*.csv
 __pycache__/
 !docs/results/*.csv
 dist/
+
+cmake-build-*/

@@ -1,0 +1,918 @@
+Start testing: Oct 13 22:47 CST
+----------------------------------------------------------
+1/43 Testing: Modulation.RoundTrip
+1/43 Test: Modulation.RoundTrip
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Modulation.RoundTrip" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Modulation.RoundTrip" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Modulation.RoundTrip
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Modulation
+[ RUN      ] Modulation.RoundTrip
+[       OK ] Modulation.RoundTrip (0 ms)
+[----------] 1 test from Modulation (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"Modulation.RoundTrip" end time: Oct 13 22:47 CST
+"Modulation.RoundTrip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/43 Testing: Coding.CrcRoundTrip
+2/43 Test: Coding.CrcRoundTrip
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Coding.CrcRoundTrip" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Coding.CrcRoundTrip" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Coding.CrcRoundTrip
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Coding
+[ RUN      ] Coding.CrcRoundTrip
+[       OK ] Coding.CrcRoundTrip (0 ms)
+[----------] 1 test from Coding (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"Coding.CrcRoundTrip" end time: Oct 13 22:47 CST
+"Coding.CrcRoundTrip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/43 Testing: Coding.ParityAndDecode
+3/43 Test: Coding.ParityAndDecode
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Coding.ParityAndDecode" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Coding.ParityAndDecode" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Coding.ParityAndDecode
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Coding
+[ RUN      ] Coding.ParityAndDecode
+[       OK ] Coding.ParityAndDecode (609 ms)
+[----------] 1 test from Coding (609 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (609 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.63 sec
+----------------------------------------------------------
+Test Passed.
+"Coding.ParityAndDecode" end time: Oct 13 22:47 CST
+"Coding.ParityAndDecode" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/43 Testing: Waveform.RoundTrip
+4/43 Test: Waveform.RoundTrip
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Waveform.RoundTrip" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Waveform.RoundTrip" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Waveform.RoundTrip
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Waveform
+[ RUN      ] Waveform.RoundTrip
+[       OK ] Waveform.RoundTrip (0 ms)
+[----------] 1 test from Waveform (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"Waveform.RoundTrip" end time: Oct 13 22:47 CST
+"Waveform.RoundTrip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/43 Testing: Waveform.PilotAndFlatChannel
+5/43 Test: Waveform.PilotAndFlatChannel
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Waveform.PilotAndFlatChannel" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Waveform.PilotAndFlatChannel" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Waveform.PilotAndFlatChannel
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Waveform
+[ RUN      ] Waveform.PilotAndFlatChannel
+[       OK ] Waveform.PilotAndFlatChannel (2 ms)
+[----------] 1 test from Waveform (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"Waveform.PilotAndFlatChannel" end time: Oct 13 22:47 CST
+"Waveform.PilotAndFlatChannel" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/43 Testing: Link.NoNoise
+6/43 Test: Link.NoNoise
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Link.NoNoise" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Link.NoNoise" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Link.NoNoise
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Link
+[ RUN      ] Link.NoNoise
+[       OK ] Link.NoNoise (119 ms)
+[----------] 1 test from Link (119 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (119 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.14 sec
+----------------------------------------------------------
+Test Passed.
+"Link.NoNoise" end time: Oct 13 22:47 CST
+"Link.NoNoise" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/43 Testing: Link.ConfigurationsAndStatistics
+7/43 Test: Link.ConfigurationsAndStatistics
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Link.ConfigurationsAndStatistics" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Link.ConfigurationsAndStatistics" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Link.ConfigurationsAndStatistics
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Link
+[ RUN      ] Link.ConfigurationsAndStatistics
+[       OK ] Link.ConfigurationsAndStatistics (397 ms)
+[----------] 1 test from Link (397 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (397 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.41 sec
+----------------------------------------------------------
+Test Passed.
+"Link.ConfigurationsAndStatistics" end time: Oct 13 22:47 CST
+"Link.ConfigurationsAndStatistics" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/43 Testing: Link.MultipathOracleAndDmrs
+8/43 Test: Link.MultipathOracleAndDmrs
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Link.MultipathOracleAndDmrs" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Link.MultipathOracleAndDmrs" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Link.MultipathOracleAndDmrs
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Link
+[ RUN      ] Link.MultipathOracleAndDmrs
+[       OK ] Link.MultipathOracleAndDmrs (49 ms)
+[----------] 1 test from Link (49 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (49 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"Link.MultipathOracleAndDmrs" end time: Oct 13 22:47 CST
+"Link.MultipathOracleAndDmrs" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/43 Testing: Reference.GoldAndCrc
+9/43 Test: Reference.GoldAndCrc
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Reference.GoldAndCrc" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Reference.GoldAndCrc" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Reference.GoldAndCrc
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Reference
+[ RUN      ] Reference.GoldAndCrc
+[       OK ] Reference.GoldAndCrc (1 ms)
+[----------] 1 test from Reference (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"Reference.GoldAndCrc" end time: Oct 13 22:47 CST
+"Reference.GoldAndCrc" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/43 Testing: Reference.Constellations
+10/43 Test: Reference.Constellations
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Reference.Constellations" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Reference.Constellations" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Reference.Constellations
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Reference
+[ RUN      ] Reference.Constellations
+[       OK ] Reference.Constellations (0 ms)
+[----------] 1 test from Reference (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"Reference.Constellations" end time: Oct 13 22:47 CST
+"Reference.Constellations" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/43 Testing: Reference.LdpcAllLiftingSetsAndRvs
+11/43 Test: Reference.LdpcAllLiftingSetsAndRvs
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Reference.LdpcAllLiftingSetsAndRvs" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Reference.LdpcAllLiftingSetsAndRvs" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Reference.LdpcAllLiftingSetsAndRvs
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Reference
+[ RUN      ] Reference.LdpcAllLiftingSetsAndRvs
+[       OK ] Reference.LdpcAllLiftingSetsAndRvs (40 ms)
+[----------] 1 test from Reference (40 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (40 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"Reference.LdpcAllLiftingSetsAndRvs" end time: Oct 13 22:47 CST
+"Reference.LdpcAllLiftingSetsAndRvs" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/43 Testing: Reference.SegmentationAndTbs
+12/43 Test: Reference.SegmentationAndTbs
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Reference.SegmentationAndTbs" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Reference.SegmentationAndTbs" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Reference.SegmentationAndTbs
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Reference
+[ RUN      ] Reference.SegmentationAndTbs
+[       OK ] Reference.SegmentationAndTbs (3 ms)
+[----------] 1 test from Reference (4 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (4 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"Reference.SegmentationAndTbs" end time: Oct 13 22:47 CST
+"Reference.SegmentationAndTbs" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/43 Testing: Boundaries.GraphAndSegmentation
+13/43 Test: Boundaries.GraphAndSegmentation
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Boundaries.GraphAndSegmentation" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Boundaries.GraphAndSegmentation" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Boundaries.GraphAndSegmentation
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Boundaries
+[ RUN      ] Boundaries.GraphAndSegmentation
+[       OK ] Boundaries.GraphAndSegmentation (2 ms)
+[----------] 1 test from Boundaries (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"Boundaries.GraphAndSegmentation" end time: Oct 13 22:47 CST
+"Boundaries.GraphAndSegmentation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/43 Testing: Boundaries.CrcDetectsSingleBitErrors
+14/43 Test: Boundaries.CrcDetectsSingleBitErrors
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Boundaries.CrcDetectsSingleBitErrors" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Boundaries.CrcDetectsSingleBitErrors" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Boundaries.CrcDetectsSingleBitErrors
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Boundaries
+[ RUN      ] Boundaries.CrcDetectsSingleBitErrors
+[       OK ] Boundaries.CrcDetectsSingleBitErrors (0 ms)
+[----------] 1 test from Boundaries (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"Boundaries.CrcDetectsSingleBitErrors" end time: Oct 13 22:47 CST
+"Boundaries.CrcDetectsSingleBitErrors" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/43 Testing: Receiver.RateRecoveryAndHarq
+15/43 Test: Receiver.RateRecoveryAndHarq
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Receiver.RateRecoveryAndHarq" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Receiver.RateRecoveryAndHarq" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Receiver.RateRecoveryAndHarq
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Receiver
+[ RUN      ] Receiver.RateRecoveryAndHarq
+[       OK ] Receiver.RateRecoveryAndHarq (26 ms)
+[----------] 1 test from Receiver (26 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (26 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"Receiver.RateRecoveryAndHarq" end time: Oct 13 22:47 CST
+"Receiver.RateRecoveryAndHarq" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/43 Testing: Receiver.NoiseAndEqualizer
+16/43 Test: Receiver.NoiseAndEqualizer
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Receiver.NoiseAndEqualizer" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Receiver.NoiseAndEqualizer" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Receiver.NoiseAndEqualizer
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Receiver
+[ RUN      ] Receiver.NoiseAndEqualizer
+[       OK ] Receiver.NoiseAndEqualizer (12 ms)
+[----------] 1 test from Receiver (12 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (12 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"Receiver.NoiseAndEqualizer" end time: Oct 13 22:47 CST
+"Receiver.NoiseAndEqualizer" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/43 Testing: Simd.ScalarMatchesDemodulator
+17/43 Test: Simd.ScalarMatchesDemodulator
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Simd.ScalarMatchesDemodulator" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Simd.ScalarMatchesDemodulator" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Simd.ScalarMatchesDemodulator
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Simd
+[ RUN      ] Simd.ScalarMatchesDemodulator
+[       OK ] Simd.ScalarMatchesDemodulator (0 ms)
+[----------] 1 test from Simd (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"Simd.ScalarMatchesDemodulator" end time: Oct 13 22:47 CST
+"Simd.ScalarMatchesDemodulator" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/43 Testing: Simd.Avx512
+18/43 Test: Simd.Avx512
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Simd.Avx512" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Simd.Avx512" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Simd.Avx512
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Simd
+[ RUN      ] Simd.Avx512
+/Users/Admin1/Desktop/NR_SW_ARM/tests/reference_test.cc:181: Skipped
+Not built or hardware unavailable
+
+[  SKIPPED ] Simd.Avx512 (0 ms)
+[----------] 1 test from Simd (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  SKIPPED ] 1 test, listed below:
+[  SKIPPED ] Simd.Avx512
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Pass Reason:
+Skip regular expression found in output. Regex=[\[  SKIPPED \]]
+"Simd.Avx512" end time: Oct 13 22:47 CST
+"Simd.Avx512" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/43 Testing: Simd.Sve
+19/43 Test: Simd.Sve
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/pusch_tests" "--gtest_filter=Simd.Sve" "--gtest_also_run_disabled_tests"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug
+"Simd.Sve" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+Running main() from /Users/Admin1/Desktop/NR_SW_ARM/third_party/googletest/googletest/src/gtest_main.cc
+Note: Google Test filter = Simd.Sve
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Simd
+[ RUN      ] Simd.Sve
+/Users/Admin1/Desktop/NR_SW_ARM/tests/reference_test.cc:181: Skipped
+Not built or hardware unavailable
+
+[  SKIPPED ] Simd.Sve (0 ms)
+[----------] 1 test from Simd (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  SKIPPED ] 1 test, listed below:
+[  SKIPPED ] Simd.Sve
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Pass Reason:
+Skip regular expression found in output. Regex=[\[  SKIPPED \]]
+"Simd.Sve" end time: Oct 13 22:47 CST
+"Simd.Sve" time elapsed: 00:00:00
+----------------------------------------------------------
+
+20/43 Testing: lesson_01_solution
+20/43 Test: lesson_01_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/01/lesson_01_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/01
+"lesson_01_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PRB=6 total_RE=1008
+PASS lesson 01
+<end of output>
+Test time =   0.28 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_01_solution" end time: Oct 13 22:47 CST
+"lesson_01_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/43 Testing: lesson_02_solution
+21/43 Test: lesson_02_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/02/lesson_02_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/02
+"lesson_02_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PASS lesson 02
+<end of output>
+Test time =   0.30 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_02_solution" end time: Oct 13 22:47 CST
+"lesson_02_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+22/43 Testing: lesson_03_solution
+22/43 Test: lesson_03_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/03/lesson_03_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/03
+"lesson_03_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PASS lesson 03
+<end of output>
+Test time =   0.28 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_03_solution" end time: Oct 13 22:47 CST
+"lesson_03_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+23/43 Testing: lesson_04_solution
+23/43 Test: lesson_04_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/04/lesson_04_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/04
+"lesson_04_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+c_init=12345 count=256
+PASS lesson 04
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_04_solution" end time: Oct 13 22:47 CST
+"lesson_04_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+24/43 Testing: lesson_05_solution
+24/43 Test: lesson_05_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/05/lesson_05_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/05
+"lesson_05_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PASS lesson 05
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_05_solution" end time: Oct 13 22:47 CST
+"lesson_05_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+25/43 Testing: lesson_06_solution
+25/43 Test: lesson_06_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/06/lesson_06_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/06
+"lesson_06_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PASS lesson 06
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_06_solution" end time: Oct 13 22:47 CST
+"lesson_06_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+26/43 Testing: lesson_07_solution
+26/43 Test: lesson_07_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/07/lesson_07_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/07
+"lesson_07_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PASS lesson 07
+<end of output>
+Test time =   0.30 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_07_solution" end time: Oct 13 22:47 CST
+"lesson_07_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+27/43 Testing: lesson_08_solution
+27/43 Test: lesson_08_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/08/lesson_08_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/08
+"lesson_08_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PASS lesson 08
+<end of output>
+Test time =   0.28 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_08_solution" end time: Oct 13 22:47 CST
+"lesson_08_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+28/43 Testing: lesson_09_solution
+28/43 Test: lesson_09_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/09/lesson_09_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/09
+"lesson_09_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+A=24 B=40 Zc=7 K=70 F=30
+PASS lesson 09
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_09_solution" end time: Oct 13 22:47 CST
+"lesson_09_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+29/43 Testing: lesson_10_solution
+29/43 Test: lesson_10_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/10/lesson_10_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/10
+"lesson_10_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PASS lesson 10
+<end of output>
+Test time =   0.32 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_10_solution" end time: Oct 13 22:47 CST
+"lesson_10_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+30/43 Testing: lesson_11_solution
+30/43 Test: lesson_11_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/11/lesson_11_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/11
+"lesson_11_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PASS lesson 11
+<end of output>
+Test time =   0.31 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_11_solution" end time: Oct 13 22:47 CST
+"lesson_11_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+31/43 Testing: lesson_12_solution
+31/43 Test: lesson_12_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/12/lesson_12_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/12
+"lesson_12_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PASS lesson 12
+<end of output>
+Test time =   0.34 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_12_solution" end time: Oct 13 22:47 CST
+"lesson_12_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+32/43 Testing: lesson_13_solution
+32/43 Test: lesson_13_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/13/lesson_13_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/13
+"lesson_13_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+TBS=576 G=1944 actual_data_RE=972
+PASS lesson 13
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_13_solution" end time: Oct 13 22:47 CST
+"lesson_13_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+33/43 Testing: lesson_14_solution
+33/43 Test: lesson_14_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/14/lesson_14_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/14
+"lesson_14_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PASS lesson 14
+<end of output>
+Test time =   0.32 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_14_solution" end time: Oct 13 22:47 CST
+"lesson_14_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+34/43 Testing: lesson_15_solution
+34/43 Test: lesson_15_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/15/lesson_15_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/15
+"lesson_15_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PASS lesson 15
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_15_solution" end time: Oct 13 22:47 CST
+"lesson_15_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+35/43 Testing: lesson_16_solution
+35/43 Test: lesson_16_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/16/lesson_16_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/16
+"lesson_16_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PASS lesson 16
+<end of output>
+Test time =   0.28 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_16_solution" end time: Oct 13 22:47 CST
+"lesson_16_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+36/43 Testing: lesson_17_solution
+36/43 Test: lesson_17_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/17/lesson_17_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/17
+"lesson_17_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PASS lesson 17
+<end of output>
+Test time =   0.30 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_17_solution" end time: Oct 13 22:47 CST
+"lesson_17_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+37/43 Testing: lesson_18_solution
+37/43 Test: lesson_18_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/18/lesson_18_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/18
+"lesson_18_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+errors=0 CI95=[0,0.561497]
+PASS lesson 18
+<end of output>
+Test time =   0.42 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_18_solution" end time: Oct 13 22:47 CST
+"lesson_18_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+38/43 Testing: lesson_19_solution
+38/43 Test: lesson_19_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/19/lesson_19_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/19
+"lesson_19_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PASS lesson 19
+<end of output>
+Test time =   0.37 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_19_solution" end time: Oct 13 22:47 CST
+"lesson_19_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+39/43 Testing: lesson_20_solution
+39/43 Test: lesson_20_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/20/lesson_20_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/20
+"lesson_20_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PASS lesson 20
+<end of output>
+Test time =   0.28 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_20_solution" end time: Oct 13 22:47 CST
+"lesson_20_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+40/43 Testing: lesson_21_solution
+40/43 Test: lesson_21_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/21/lesson_21_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/21
+"lesson_21_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PUSCH power capped at 23 dBm; TB CRC PASS
+PASS lesson 21
+<end of output>
+Test time =   0.36 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_21_solution" end time: Oct 13 22:47 CST
+"lesson_21_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+41/43 Testing: lesson_22_solution
+41/43 Test: lesson_22_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/22/lesson_22_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/22
+"lesson_22_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+PASS lesson 22
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_22_solution" end time: Oct 13 22:47 CST
+"lesson_22_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+42/43 Testing: lesson_23_solution
+42/43 Test: lesson_23_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/23/lesson_23_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/23
+"lesson_23_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+SKIP: avx512 not built or unsupported
+<end of output>
+Test time =   0.28 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_23_solution" end time: Oct 13 22:47 CST
+"lesson_23_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+43/43 Testing: lesson_24_solution
+43/43 Test: lesson_24_solution
+Command: "/Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/24/lesson_24_solution"
+Directory: /Users/Admin1/Desktop/NR_SW_ARM/build/refactor-root-debug/lessons/24
+"lesson_24_solution" start time: Oct 13 22:47 CST
+Output:
+----------------------------------------------------------
+SKIP: sve not built or unsupported
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"lesson_24_solution" end time: Oct 13 22:47 CST
+"lesson_24_solution" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 13 22:47 CST

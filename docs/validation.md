@@ -13,7 +13,11 @@ clang-format 23.1.3采用工程Google预设。构建包含随附的srsRAN通用�
 | Release构建 | 通过 |
 | Debug CTest | 43项：39通过，4跳过，0失败 |
 | Release CTest | 43项：39通过，4跳过，0失败 |
-| 24课练习骨架构建 | 通过；初始TODO不应运行成功 |
+| 24课独立配置与编译 | 每课从干净目录构建答案与骨架，全部通过 |
+| 独立课CTest与答案运行 | 第1–22课通过；第23/24课硬件条件跳过 |
+| 初始练习运行检查 | 第1–22课明确返回未实现；第23/24课硬件条件跳过 |
+| 单课依赖检查 | 第1课仅runtime；第4课无FFT/LDPC；第10课无译码器 |
+| 不指定生成器的独立构建 | 第4课使用本机默认Unix Makefiles，构建与CTest通过 |
 | 自编C++格式检查 | 通过 |
 | AVX-512/SVE指令源文件交叉编译 | AppleClang成功生成目标文件，仅编译检查，不是硬件运行 |
 | 无噪声QPSK链路 | TBS=576，bit_errors=0，CRC=PASS |
@@ -45,37 +49,32 @@ LDPC向量使用py3gpp的稀疏矩阵编码路径。它的高层`nrLDPCEncode`�
 
 ## 尚未执行，不能宣称通过
 
-- Windows 11/UCRT64原生构建、运行及VS Code/CLion实际调试。
+- Windows 11当前MSYS/GCC工具链运行及VS Code/CLion实际调试。
 - Windows CI实际运行（工作流已提供，但当前目录未推送到远端运行）。
 - AVX-512硬件执行、SVE服务器执行与性能加速验证。
 
-本机静态检查已修复上游一处Windows LLP64长度类型问题，并排除日志/pthread依赖。
-这不替代真实Windows测试。Windows环境准备好后运行：
+本机独立构建的源码清单见[standalone_builds.json](results/standalone_builds.json)。
+这些清单来自各课compile_commands.json，而非手写声明。第1课仅包含runtime，
+第4课仅包含runtime、sequence和random_bits，第10课包含基图表而无译码器。
+根工程从干净目录指定第1课目标，也只编译runtime及该课源码。
+重构后的根工程日志见[Debug记录](results/debug_refactor_tests.log)和[Release记录](results/release_refactor_tests.txt)。
 
-```powershell
-cmake --preset windows-debug
-cmake --build --preset windows-debug
-cmake --build --preset windows-debug --target all_exercises
-ctest --preset windows-debug
-cmake --preset windows-release
-cmake --build --preset windows-release
-ctest --preset windows-release
-```
-
-VS Code检查断点能否命中`RunLink`，CLion检查能否使用同一UCRT64工具链。
+Windows上按[环境说明](windows_setup.md)使用当前工具链Configure后，
+在课目录运行`cmake --build build`和`ctest --test-dir build --output-on-failure`。
+再检查断点能否命中对应课的solution.cc/exercise.cc。
 将实际OS、GCC/GDB版本和测试日志补入此文件，再把Windows状态改为已验证。
 
 ## 复现本机验证
 
 ```bash
-cmake -S . -B build/local -G Ninja -DCMAKE_BUILD_TYPE=Debug
-cmake --build build/local -j 4
-cmake --build build/local --target all_exercises -j 4
-ctest --test-dir build/local --output-on-failure
-cmake -S . -B build/release -G Ninja -DCMAKE_BUILD_TYPE=Release
-cmake --build build/release -j 4
-ctest --test-dir build/release --output-on-failure
+# 这里的Ninja是验证机器已安装的生成器，不是工程要求。
+python tools/validate_lesson_builds.py --build-root build/new-lesson-check \
+  --generator Ninja --check-initial-exercises
+cmake -S . -B build/new-root-check -G Ninja -DCMAKE_BUILD_TYPE=Debug
+cmake --build build/new-root-check -j 4
+ctest --test-dir build/new-root-check --output-on-failure
 python tools/check_format.py
+python tools/audit_course.py
 ```
 
 `tools/check_format.py`和向量生成器是维护工具；学习者运行C++不需要Python。

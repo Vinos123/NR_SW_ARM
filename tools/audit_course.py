@@ -6,7 +6,7 @@ import re
 
 root = Path(__file__).resolve().parents[1]
 for i in range(1, 25):
-    for name in ['README.md', 'exercise.h', 'exercise.cc', 'solution.cc', 'main.cc']:
+    for name in ['README.md', 'exercise.h', 'exercise.cc', 'solution.cc', 'main.cc', 'CMakeLists.txt']:
         assert (root / f'lessons/{i:02}' / name).is_file(), (i, name)
     assert f'lesson_{i:02}::' in (root/f'lessons/{i:02}/main.cc').read_text(), i
 for path in [root/'README.md', * (root/'docs').glob('*.md'),
@@ -17,6 +17,9 @@ for path in [root/'README.md', * (root/'docs').glob('*.md'),
 manifest=json.loads((root/'tests/data/manifest.json').read_text())
 for name, expected in manifest['files'].items():
     assert hashlib.sha256((root/'tests/data'/name).read_bytes()).hexdigest()==expected,name
-for path in [root/'CMakePresets.json', *(root/'.vscode').glob('*.json')]:
+for path in [*(root/'.vscode').glob('*.json'), *(root/'lessons').glob('*/.vscode/*.json')]:
     json.loads(path.read_text())
-print('24 lesson packages, local links, JSON and reference hashes: PASS')
+assert not (root/'CMakePresets.json').exists()
+for path in [root/'CMakeLists.txt', *(root/'lessons').glob('*/CMakeLists.txt')]:
+    assert 'CMAKE_CXX_COMPILER' not in path.read_text(), path
+print('24 standalone lesson entries, local links, JSON and reference hashes: PASS')

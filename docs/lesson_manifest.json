@@ -18,7 +18,7 @@
   {
     "i": 3,
     "title": "可重复输入与测试",
-    "source": "src/modulation.cc",
+    "source": "src/random_bits.cc",
     "token": "Bits MakeBits(",
     "ref": "工程方法；非3GPP规定算法",
     "cpp": "uint32_t、范围for、随机数状态、可重复测试"
@@ -26,7 +26,7 @@
   {
     "i": 4,
     "title": "Gold序列与PUSCH加扰",
-    "source": "src/modulation.cc",
+    "source": "src/sequence.cc",
     "token": "Bits Gold(",
     "ref": "38.211 §5.2.1、§6.3.1.1",
     "cpp": "位移、异或、定长整数与vector索引"
@@ -50,7 +50,7 @@
   {
     "i": 7,
     "title": "CRC与位序",
-    "source": "src/coding.cc",
+    "source": "src/crc.cc",
     "token": "uint32_t CalculateCrc(",
     "ref": "38.212 §5.1、§6.2.1",
     "cpp": "uint32_t、布尔反馈、掩码、MSB先行"
@@ -58,7 +58,7 @@
   {
     "i": 8,
     "title": "基图选择与分段边界",
-    "source": "src/coding.cc",
+    "source": "src/coding_plan.cc",
     "token": "int SelectBaseGraph(",
     "ref": "38.212 §6.2.2、§6.2.3、§5.2.2",
     "cpp": "逻辑或与逻辑与、条件表达式、结构体"
@@ -66,7 +66,7 @@
   {
     "i": 9,
     "title": "提升尺寸与长度跟踪",
-    "source": "src/coding.cc",
+    "source": "src/coding_plan.cc",
     "token": "CodingPlan MakeCodingPlan(",
     "ref": "38.212 §5.2.2、§5.3.2及表5.3.2-1",
     "cpp": "整数向上取整、范围遍历、结构体字段"
@@ -74,7 +74,7 @@
   {
     "i": 10,
     "title": "QC-LDPC标量编码",
-    "source": "src/coding.cc",
+    "source": "src/ldpc_encoder.cc",
     "token": "Bits LdpcEncode(",
     "ref": "38.212 §5.3.2及表5.3.2-2、5.3.2-3",
     "cpp": "lambda捕获、span、循环移位、分块算法"
@@ -82,7 +82,7 @@
   {
     "i": 11,
     "title": "速率匹配与交织",
-    "source": "src/coding.cc",
+    "source": "src/rate_matching.cc",
     "token": "Bits RateMatch(",
     "ref": "38.212 §5.4.2.1、§5.4.2.2、§6.2.5–6",
     "cpp": "索引映射、模运算、向量预分配"
@@ -90,7 +90,7 @@
   {
     "i": 12,
     "title": "译码适配与反速率匹配",
-    "source": "src/coding.cc",
+    "source": "src/rate_matching.cc",
     "token": "std::vector<float> RateRecover(",
     "ref": "38.212 §5.4.2的逆过程；译码算法为接收机选择",
     "cpp": "适配层、堆内存、unique_ptr、量化"
@@ -98,7 +98,7 @@
   {
     "i": 13,
     "title": "MCS、TBS与资源预算",
-    "source": "src/waveform.cc",
+    "source": "src/allocation.cc",
     "token": "int TransportBlockSize(",
     "ref": "38.214 §6.1.4.1–2；引用§5.1.3.1–2",
     "cpp": "查表、lower_bound、log2与整数转换"
@@ -106,7 +106,7 @@
   {
     "i": 14,
     "title": "DM-RS与数据RE映射",
-    "source": "src/waveform.cc",
+    "source": "src/resource_mapping.cc",
     "token": "ResourceGrid MapGrid(",
     "ref": "38.211 §6.4.1.1、§6.3.1.6–7",
     "cpp": "二维遍历、引用赋值、条件分支"
@@ -114,7 +114,7 @@
   {
     "i": 15,
     "title": "OFDM与循环前缀",
-    "source": "src/waveform.cc",
+    "source": "src/ofdm.cc",
     "token": "std::vector<Complex> OfdmModulate(",
     "ref": "38.211 §5.3.1",
     "cpp": "迭代器范围、插入、FFT库与RAII"
@@ -122,7 +122,7 @@
   {
     "i": 16,
     "title": "从理想信道到多径",
-    "source": "src/waveform.cc",
+    "source": "src/channel_model.cc",
     "token": "std::vector<Complex> ApplyChannel(",
     "ref": "信号处理实验；不是38.901数字孪生模型",
     "cpp": "双层循环、size_t下溢检查、复数乘法"
@@ -130,7 +130,7 @@
   {
     "i": 17,
     "title": "信道估计与均衡",
-    "source": "src/waveform.cc",
+    "source": "src/channel_estimation.cc",
     "token": "std::vector<Complex> EstimateChannel(",
     "ref": "38.211 §6.4.1.1规定DM-RS；LS/ZF/MMSE属于接收机算法",
     "cpp": "复数除法、插值、误差容限"
@@ -162,7 +162,7 @@
   {
     "i": 21,
     "title": "功控、测量与端到端复盘",
-    "source": "src/waveform.cc",
+    "source": "src/power_control.cc",
     "token": "float PuschPowerDbm(",
     "ref": "38.213 §7.1.1；38.215 §5.1、§5.2测量定义",
     "cpp": "dB与线性单位、std::min、接口整合"
@@ -170,7 +170,7 @@
   {
     "i": 22,
     "title": "性能基线与标量内核",
-    "source": "src/simd.cc",
+    "source": "src/qpsk_scalar.cc",
     "token": "void QpskLlrScalar(",
     "ref": "接收算法与性能工程；38.211 §5.1.3星座定义",
     "cpp": "std::chrono、span、连续内存、编译优化"

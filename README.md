@@ -1,7 +1,7 @@
 # 用C++读懂PUSCH：8周实战教程
 
 面向有GNU Radio/卫星通信经验、初入4G/5G物理层岗位的学习者。
-**Windows 11 + VS Code为主，CLion可使用同一CMake/Ninja工程。**
+**Windows 11 + VS Code为主，CLion可使用同一CMake工程。**
 前7周以可移植标量C++学习协议，第8周再做AVX-512与SVE。
 
 ## 从这里开始
@@ -16,27 +16,27 @@
 
 ## 先运行，再阅读
 
-在配置好UCRT64_ROOT和Path的PowerShell中：
+在VS Code直接打开某一课目录，例如`lessons/04`：
+
+1. 用CMake Tools选择现有MSYS环境检测到的GCC工具链，执行Configure。
+2. 选择`lesson_04_solution`或`lesson_04_exercise`作为Build目标。
+3. 选择相同Launch目标，使用Run/Debug按钮。
+
+不提供CMake预设，不固定编译器、生成器或工具安装路径。
+每课有自己的构建入口，只编译必要模块。课目录仍需保留在完整仓库内。
+
+Configure后，在本课目录终端中：
 
 ```powershell
-cmake --preset windows-debug
-cmake --build --preset windows-debug --parallel 4
-ctest --preset windows-debug
-.\build\windows-debug\pusch_cli.exe link inf
+cmake --build build --target lesson_04_solution lesson_04_exercise
+ctest --test-dir build --output-on-failure
 ```
 
-默认无噪声链路输出：`TBS=576 bit_errors=0 CRC=PASS`。
-运行一课：
+练习初始会返回`NOT IMPLEMENTED`。在`exercise.cc`完成TODO，再构建练习目标。
+参考程序与练习程序是两个独立目标；后续课复用公共源码，无需先构建前课。
 
-```powershell
-cmake --build --preset windows-debug --target lesson_04_solution lesson_04_exercise
-.\build\windows-debug\lesson_04_solution.exe
-.\build\windows-debug\lesson_04_exercise.exe
-```
-
-练习初始会明确返回`NOT IMPLEMENTED`。在`exercise.cc`中完成TODO，再运行相同固定输入。
-不要通过删除测试或直接调用同名参考函数来“完成”练习。
-参考程序与练习程序是两个目标，后续课程可以复用已经提供的前课模块。
+需要完整链路时打开仓库根目录，选择`pusch_cli`目标。默认运行输出：
+`TBS=576 bit_errors=0 CRC=PASS`。根工程仍可单独选择任一课目标。
 
 ## 8周路线
 
@@ -58,16 +58,18 @@ cmake --build --preset windows-debug --target lesson_04_solution lesson_04_exerc
 
 | 位置 | 内容 |
 |---|---|
-| `lessons/01`—`lessons/24` | 各课讲义、骨架、答案和验收程序 |
-| `include/pusch` | 公共类型和接口 |
-| `src/modulation.cc` | Gold、加扰、调制解调、噪声 |
-| `src/coding.cc` | CRC、分段、LDPC编码、速率匹配 |
-| `src/decoder_adapter.cc` | srsRAN通用译码器适配 |
-| `src/waveform.cc` | TBS、DM-RS、映射、OFDM、信道和均衡 |
-| `src/link.cc` | TB到波形再到TB的集成和BLER统计 |
-| `src/qpsk_avx512.cc`、`src/qpsk_sve.cc` | 第8周指令内核 |
-| `tests/data` | 独立参考向量与来源记录 |
-| `.vscode`、`CMakePresets.json` | 编辑、构建和调试配置 |
+| `lessons/01`—`lessons/24` | 独立CMake入口、讲义、骨架、答案和验收程序 |
+| `cmake/PuschModules.cmake` | 按需创建模块及传递依赖 |
+| `cmake/PuschLesson.cmake` | 根工程与独立课程共用的构建逻辑 |
+| `include/pusch` | 公共类型与接口，包含声明不会编译全部实现 |
+| `src` | 按序列、CRC、编码、映射、FFT、信道等功能拆开的公共实现 |
+| `src/decoder_adapter.cc` | srsRAN通用译码适配，第12课起按需引入 |
+| `src/link.cc` | 完整链路集成与BLER统计 |
+| `tests/data` | 独立参考向量及来源记录 |
+| `.vscode`及各课`.vscode` | 当前工具链与CMake Tools集成 |
+
+第1课仅编译runtime，第4课仅编译runtime、序列和固定输入模块；编码课使用基图表，
+不因此引入译码器。FFT及译码器只出现在确实需要它们的课程中。
 
 ## 范围与验证状态
 
@@ -82,5 +84,5 @@ cmake --build --preset windows-debug --target lesson_04_solution lesson_04_exerc
 - [实际验证记录与未验证项](docs/validation.md)
 - [依赖、移植改动与许可](third_party/README.md)
 
-当前交付环境为macOS。Windows配置与CI工作流已提供，但**不把macOS通过写成Windows已验证**；
+当前交付环境为macOS。Windows工具链说明与CI工作流已提供，但**不把macOS通过写成Windows已验证**；
 AVX-512/SVE硬件验证也独立记录。工程按AGPL-3.0-or-later提供，第三方保留各自许可。
