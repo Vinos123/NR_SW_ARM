@@ -4,6 +4,7 @@ jobs:
   windows:
     runs-on: windows-latest
     strategy:
+      fail-fast: false
       matrix:
         include:
           - environment: MSYS
@@ -28,7 +29,7 @@ jobs:
           cmake --build build/ci-root -j 2
           cmake --build build/ci-root --target all_exercises -j 2
           ctest --test-dir build/ci-root --output-on-failure
-          python tools/validate_lesson_builds.py --build-root build/ci-lessons --generator Ninja --check-initial-exercises
+          python tools/validate_lesson_builds.py --build-root build/ci-lessons --generator Ninja
       - uses: actions/upload-artifact@v4
         if: always()
         with:

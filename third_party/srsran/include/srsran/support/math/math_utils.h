@@ -28,12 +28,15 @@
 #include "srsran/adt/complex.h"
 #include "srsran/support/srsran_assert.h"
 #include <array>
+#include <numbers>
 #include <numeric>
 
 namespace srsran {
 
 /// Defines two times Pi.
-constexpr float TWOPI = 2.0F * static_cast<float>(M_PI);
+// 中文：使用C++20标准常量，避免严格Windows GCC模式缺少M_PI宏。
+// English: Use the C++20 constant; strict Windows GCC need not define M_PI.
+constexpr float TWOPI = 2.0F * std::numbers::pi_v<float>;
 
 /// Floating point near zero value.
 constexpr float near_zero = 1e-9;

@@ -11,8 +11,8 @@ clang-format 23.1.3采用工程Google预设。构建包含随附的srsRAN通用�
 |---|---|
 | Debug构建 | 通过 |
 | Release构建 | 通过 |
-| Debug CTest | 43项：39通过，4跳过，0失败 |
-| Release CTest | 43项：39通过，4跳过，0失败 |
+| Debug CTest（本次兼容性修复） | 44项：40通过，4跳过，0失败 |
+| Release CTest（此前模块重构） | 43项：39通过，4跳过，0失败 |
 | 24课独立配置与编译 | 每课从干净目录构建答案与骨架，全部通过 |
 | 独立课CTest与答案运行 | 第1–22课通过；第23/24课硬件条件跳过 |
 | 初始练习运行检查 | 第1–22课明确返回未实现；第23/24课硬件条件跳过 |
@@ -78,3 +78,15 @@ python tools/audit_course.py
 ```
 
 `tools/check_format.py`和向量生成器是维护工具；学习者运行C++不需要Python。
+
+## Windows CI失败与本地修复（2026-10-13）
+
+[运行38420604288](https://github.com/Vinos123/NR_SW_ARM/actions/runs/38420604288)
+的MSYS和UCRT64编译日志均报：`M_PI was not declared in this scope`。
+错误来自随附srsRAN的support/math/math_utils.h，而非课程练习。
+本地已改为C++20的std::numbers::pi_v<float>，并加入没有M_PI宏的编译回归测试。
+先在本机移除该宏复现原错误，修复后该检查和Debug完整测试均通过。
+
+工作流设置fail-fast=false，让两个环境分别完成，方便保留各自错误；
+同时取消CI对“练习必须未完成”的要求，允许学习者提交自己的实现。
+本地修复尚未上传并经过新的Windows CI，不能据此把Windows状态改成通过。

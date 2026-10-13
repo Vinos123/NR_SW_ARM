@@ -45,7 +45,7 @@
     "third_party/srsran/include/srsran/srsvec/zero.h": "64028c791986c6e8c150afe6dd7ff35bfb44e1b051638d3ff1e51f1f43be52c5",
     "third_party/srsran/include/srsran/support/compiler.h": "560b46ced79fef9ffffe481d88252fa484a08173ebf1fcd9479c2c5d9000b6d2",
     "third_party/srsran/include/srsran/support/math/bit_ops.h": "6b52edefbd07195ef08c9a430873b06dbf7fdf7df64fa7c3b9a0763db60aaa84",
-    "third_party/srsran/include/srsran/support/math/math_utils.h": "85b7f5ac43d9223942bf9997b6919743bd57a70ac8e3c9c6e40b4a40d58d0c79",
+    "third_party/srsran/include/srsran/support/math/math_utils.h": "c9622ad356d75c091a74a092e6a66d5ada5e1ac9cc1fbef9050ddfe4e6714388",
     "third_party/srsran/include/srsran/support/srsran_assert.h": "650f0a32675ca631e4f143f1e5c8f2649276382edd76a6ac25ac2d15f0005bde",
     "third_party/srsran/include/srsran/support/units.h": "1027d592c31dfb000c694f1c14271b130a9d45d5d0d70d3972985449934eece2",
     "third_party/srsran/ldpc/ldpc_decoder_generic.cpp": "9beab0d377e8d9c0847d3fbf8a6b993448ee9e481d5a4a03e1fa702ca932bd75",

@@ -24,6 +24,7 @@
 2. `adt/span.h`移除未使用的srslog include及copy_loggable_type特化。
 3. `src/decoder_adapter.cc`以std::find提供比较辅助符号，不引入额外SIMD库。
 4. `ldpc_decoder_impl.cpp`将长度表达式中的unsigned long改为size_t显式运算，兼容Windows LLP64。
+5. `support/math/math_utils.h`用C++20的`std::numbers::pi_v<float>`替代非标准`M_PI`宏，兼容Windows GCC严格模式。
 
 通用译码核心算法、LLR类型语义和标准基图数据保留上游实现。
 这些修改与Windows运行验证是两件事，实际验证状态见docs/validation.md。
