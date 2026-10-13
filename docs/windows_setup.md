@@ -35,6 +35,10 @@ code .\lessons\04
 执行Build，只编译该目标及其必要模块。独立课工程的默认构建也会生成这两个目标。
 初始练习可以编译，但运行会输出`NOT IMPLEMENTED`并返回1，这是预期行为。
 
+根目录和各课的`.vscode/tasks.json`已把默认构建任务设为**CMake: 构建当前目标**。
+完成Configure并选择Build目标后，Windows按Ctrl+Shift+B，macOS按Cmd+Shift+B，
+即可调用该目标的CMake构建；不使用活动文件名来决定源码或输出路径。
+
 **不要使用“编译当前文件”或Code Runner直接编译main.cc。** 一课通常包含多个源码文件，
 应由CMake完成编译和链接。修改exercise.cc后仍构建exercise目标。
 
@@ -46,10 +50,18 @@ code .\lessons\04
 - Debug按钮或 **CMake: Debug** 启动调试。
 - 在该课solution.cc或exercise.cc设置断点。
 
-CMake Tools从已配置的工程中识别程序路径和调试器，不需要固定的launch.json。
+CMake Tools从已配置的工程中识别程序路径和调试器，可以直接使用CMake: Debug。
+也可在“运行和调试”的配置列表选择**CMake: 调试当前运行目标**后按F5；
+随附的launch.json使用`cmake.launchTargetPath`解析当前Launch目标并在启动前构建它。
+Windows/Linux使用当前环境中的GDB，macOS使用C/C++扩展的LLDB调试适配器。
+这些配置不固定编译器、生成器、build路径或某个exe名称。
 构建目标和Launch目标是两个选择，切换答案/练习时同时确认，避免运行了旧目标。
 
 这一机制见[CMake Tools官方运行/调试说明](https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/debug-launch.md)。
+任务格式见[CMake Tools官方任务说明](https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/tasks.md)。
+
+项目设置隐藏C/C++扩展的“构建和调试活动文件”快捷按钮，避免误入单文件流程。
+如果安装了Code Runner，它的Run Code仍然是另一个入口；本教程使用CMake Tools的Run/Debug。
 
 ## 5. 在终端使用已配置工程
 
@@ -95,7 +107,25 @@ cmake --build build --target lesson_04_solution
 | 已构建练习却运行答案 | 同时检查Build目标与Launch目标 |
 | 程序找不到DLL | 从当前MSYS开发环境启动VS Code，检查其继承的Path |
 | 单文件编译出现undefined reference | 改用CMake目标构建 |
+| `pusch/core.h file not found`，命令中只有main.cc | 使用CMake目标；只添加includePath不能补齐源码链接和C++20编译配置 |
 | `NOT IMPLEMENTED` | 练习尚未实现，按TODO补全 |
 | SIMD输出SKIP | 尚未启用该内核或缺少硬件，见优化指南 |
 
 实际平台验证状态见[验证记录](validation.md)。当前交付环境是macOS，Windows IDE操作仍需在你的电脑上确认。
+
+## 9. macOS第1课的最小复现
+
+如果日志包含`/usr/bin/clang++`和`/Users/...`，当前运行环境是macOS。
+在VS Code的CMake Kit中选择本机Clang；Windows继续选择已有的GCC工具链。
+在仓库根目录的终端运行以下命令，可验证第1课的独立构建（使用新的构建目录）：
+
+```bash
+cmake -S lessons/01 -B build/lesson01-local-check -DCMAKE_BUILD_TYPE=Debug
+cmake --build build/lesson01-local-check --target lesson_01_solution lesson_01_exercise
+./build/lesson01-local-check/lesson_01_solution
+./build/lesson01-local-check/lesson_01_exercise
+```
+
+最后一行运行自己的实现；练习尚未完成时报告未实现是预期结果。
+CMake会添加公共头文件搜索路径，编译main.cc、对应实现和runtime模块，
+并启用C++20。单独执行`clang++ main.cc`没有这些工程信息。

@@ -77,12 +77,12 @@ ctest --test-dir build --output-on-failure
 亲写LDPC编码，复用srsRAN通用译码。无UCI主线、单层、type1 DM-RS、理想同步。
 第20课UCI为明确标记的人为索引示例，不作为真实NR实现。
 
+当前交付环境为macOS。Windows工具链说明与CI工作流已提供，但**不把macOS通过写成Windows已验证**；
+AVX-512/SVE硬件验证也独立记录。工程按AGPL-3.0-or-later提供，第三方保留各自许可。
+
 - [接口、数值约定和支持范围](docs/design.md)
 - [固定规范版本与资料](docs/references.md)
 - [srsRAN源码阅读地图](docs/source_map.md)
 - [AVX-512 / SVE指南](docs/simd.md)
 - [实际验证记录与未验证项](docs/validation.md)
 - [依赖、移植改动与许可](third_party/README.md)
-
-当前交付环境为macOS。Windows工具链说明与CI工作流已提供，但**不把macOS通过写成Windows已验证**；
-AVX-512/SVE硬件验证也独立记录。工程按AGPL-3.0-or-later提供，第三方保留各自许可。

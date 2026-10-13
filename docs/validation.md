@@ -11,8 +11,8 @@ clang-format 23.1.3采用工程Google预设。构建包含随附的srsRAN通用�
 |---|---|
 | Debug构建 | 通过 |
 | Release构建 | 通过 |
-| Debug CTest（本次兼容性修复） | 44项：40通过，4跳过，0失败 |
-| Release CTest（此前模块重构） | 43项：39通过，4跳过，0失败 |
+| Debug CTest（本次头文件兼容性修复） | 45项：41通过，4跳过，0失败 |
+| Release CTest（本次头文件兼容性修复） | 45项：41通过，4跳过，0失败 |
 | 24课独立配置与编译 | 每课从干净目录构建答案与骨架，全部通过 |
 | 独立课CTest与答案运行 | 第1–22课通过；第23/24课硬件条件跳过 |
 | 初始练习运行检查 | 第1–22课明确返回未实现；第23/24课硬件条件跳过 |
@@ -50,7 +50,7 @@ LDPC向量使用py3gpp的稀疏矩阵编码路径。它的高层`nrLDPCEncode`�
 ## 尚未执行，不能宣称通过
 
 - Windows 11当前MSYS/GCC工具链运行及VS Code/CLion实际调试。
-- Windows CI实际运行（工作流已提供，但当前目录未推送到远端运行）。
+- 本次头文件修复后的Windows CI通过结果（此前两次运行均编译失败，见下方记录）。
 - AVX-512硬件执行、SVE服务器执行与性能加速验证。
 
 本机独立构建的源码清单见[standalone_builds.json](results/standalone_builds.json)。
@@ -89,4 +89,24 @@ python tools/audit_course.py
 
 工作流设置fail-fast=false，让两个环境分别完成，方便保留各自错误；
 同时取消CI对“练习必须未完成”的要求，允许学习者提交自己的实现。
-本地修复尚未上传并经过新的Windows CI，不能据此把Windows状态改成通过。
+上述修复已经推送。随后[运行38425129521](https://github.com/Vinos123/NR_SW_ARM/actions/runs/38425129521)
+在提交24f10cb上运行：MSYS（GCC 15.3.0）和UCRT64（GCC 16.2.0）
+均不再报M_PI错误，但在bounded_bitset.h中报`function is not a member of std`。
+两个环境均在根工程编译阶段失败，尚未执行测试及逐课构建。
+
+本次在该头文件中显式包含`<functional>`，并添加首先包含该头文件的独立测试源文件，
+实例化for_each和for_each_interval两个回调模板。依赖清单哈希与修改记录同步更新。
+本机Debug和Release完整测试均为45项：41通过，4项因SIMD硬件条件跳过。
+这次修复尚未经过新的Windows CI，Windows通过状态仍待推送后确认。
+
+## 第1课单文件构建排错（2026-10-14）
+
+用户日志中的clang++命令仅包含main.cc，没有公共include搜索路径，并使用gnu++14。
+根目录的自动生成tasks.json和launch.json均指向活动文件，绕过了CMake工程。
+本次根目录和24课提供一致的CMake当前目标构建任务、动态Launch目标调试配置，
+并隐藏C/C++活动文件调试快捷按钮。没有指定编译器、生成器或固定构建路径。
+
+在macOS AppleClang 21.0.0上，从新目录build/lesson01-local-check独立配置第1课，
+构建答案及用户当前练习实现，两个程序均输出`PRB=6 total_RE=1008`及`PASS lesson 01`。
+本课CTest通过；25套VS Code配置JSON、文档链接检查通过。
+这里只验证了配置内容和CMake命令行构建，没有实际操作VS Code快捷键或验证IDE断点。

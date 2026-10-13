@@ -29,6 +29,7 @@
 #include "srsran/support/srsran_assert.h"
 #include "fmt/format.h"
 #include <cinttypes>
+#include <functional>
 #include <string>
 
 namespace srsran {

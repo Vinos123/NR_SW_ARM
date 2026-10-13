@@ -25,7 +25,7 @@ if(PUSCH_BUILD_TESTS)
   set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
   add_subdirectory(third_party/googletest EXCLUDE_FROM_ALL)
   add_executable(pusch_tests tests/core_test.cc tests/reference_test.cc
-    tests/portable_math_test.cc)
+    tests/portable_math_test.cc tests/portable_bitset_test.cc)
   target_link_libraries(pusch_tests PRIVATE pusch GTest::gtest_main)
   target_compile_definitions(pusch_tests PRIVATE
     PUSCH_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/tests/data")

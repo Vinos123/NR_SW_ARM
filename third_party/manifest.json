@@ -23,7 +23,7 @@
     "third_party/srsran/fmt/fmt/xchar.h": "b6a64fbc0987e27cc1a202b24d93541845a0cc62d66c35c2dccccadf5fef9059",
     "third_party/srsran/include/srsran/adt/bf16.h": "a93fd7a50d30283bca4e6b17cbdd8bf2266967fe4a66b296b2573157870abb14",
     "third_party/srsran/include/srsran/adt/bit_buffer.h": "82d1b4bf2413f555f27d29b6a886f6bf023aa8e396c9512b796ded44311abc21",
-    "third_party/srsran/include/srsran/adt/bounded_bitset.h": "f02f33511dd4ec5309c5af34c7323995fda8d582f3fb3178c0da1896efb52b64",
+    "third_party/srsran/include/srsran/adt/bounded_bitset.h": "9dcfb6a58be9914143a3eee9e4d7a9c1fde4714cf4e261b1f1f52ef9a254a6c7",
     "third_party/srsran/include/srsran/adt/complex.h": "26302b8a8fd15c44926edeb83be375cd8514b12fbf355497cbc8c6f3920ea590",
     "third_party/srsran/include/srsran/adt/detail/type_traits.h": "053f1f818d0dfed1c6c8c245e4b9dda98fe50fe019c8656d8468a5a920385aa1",
     "third_party/srsran/include/srsran/adt/span.h": "436afc5eb9a44363120214d37d21f62f10826cb5ba700a68f17e67c61b7c07e0",

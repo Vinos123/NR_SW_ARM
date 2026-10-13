@@ -3,5 +3,7 @@
   "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
   "files.encoding": "utf8",
   "C_Cpp.clang_format_style": "file",
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "cmake.buildBeforeRun": true,
+  "C_Cpp.debugShortcut": false
 }

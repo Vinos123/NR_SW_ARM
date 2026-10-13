@@ -40,6 +40,11 @@ int CountResourceElements(int prbs);
 选择Build目标`lesson_01_solution`或`lesson_01_exercise`，再选择相同Launch目标运行或调试。
 不需要先构建根工程，不使用“编译当前文件”。
 
+完成Configure并选择目标后，可用默认构建快捷键（Windows Ctrl+Shift+B，macOS Cmd+Shift+B）。
+F5请选择**CMake: 调试当前运行目标**，并把Launch目标设为你正在学习的答案或练习。
+如果命令显示`clang++ ... main.cc -o .../main`，说明启动了单文件流程，
+应切回CMake构建；详见[排错与macOS示例](../../docs/windows_setup.md#9-macos第1课的最小复现)。
+
 完成Configure后，可在本课目录的PowerShell终端运行（build为实际构建目录）：
 
 ```powershell

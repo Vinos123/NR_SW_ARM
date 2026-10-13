@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "CMake: 构建当前目标",
+      "type": "cmake",
+      "command": "build",
+      "targets": [
+        "${command:cmake.buildTargetName}"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "detail": "使用CMake Tools当前选择的目标、工具链和构建目录。"
+    }
+  ]
+}
