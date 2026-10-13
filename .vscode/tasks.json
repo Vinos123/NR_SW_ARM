@@ -1,0 +1,49 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "configure",
+      "type": "process",
+      "command": "${env:UCRT64_ROOT}/bin/cmake.exe",
+      "args": [
+        "--preset",
+        "windows-debug"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "build",
+      "type": "process",
+      "command": "${env:UCRT64_ROOT}/bin/cmake.exe",
+      "args": [
+        "--build",
+        "--preset",
+        "windows-debug"
+      ],
+      "dependsOn": "configure",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [
+        "$gcc"
+      ]
+    },
+    {
+      "label": "test",
+      "type": "process",
+      "command": "${env:UCRT64_ROOT}/bin/ctest.exe",
+      "args": [
+        "--preset",
+        "windows-debug"
+      ],
+      "dependsOn": "build",
+      "options": {
+        "env": {
+          "PATH": "${env:UCRT64_ROOT}/bin;${env:PATH}"
+        }
+      },
+      "problemMatcher": []
+    }
+  ]
+}

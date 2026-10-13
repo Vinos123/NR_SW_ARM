@@ -1,0 +1,97 @@
+Test project /Users/Admin1/Desktop/NR_SW_ARM/build/local
+      Start  1: Modulation.RoundTrip
+ 1/43 Test  #1: Modulation.RoundTrip ...................   Passed    0.04 sec
+      Start  2: Coding.CrcRoundTrip
+ 2/43 Test  #2: Coding.CrcRoundTrip ....................   Passed    0.02 sec
+      Start  3: Coding.ParityAndDecode
+ 3/43 Test  #3: Coding.ParityAndDecode .................   Passed    0.63 sec
+      Start  4: Waveform.RoundTrip
+ 4/43 Test  #4: Waveform.RoundTrip .....................   Passed    0.02 sec
+      Start  5: Waveform.PilotAndFlatChannel
+ 5/43 Test  #5: Waveform.PilotAndFlatChannel ...........   Passed    0.02 sec
+      Start  6: Link.NoNoise
+ 6/43 Test  #6: Link.NoNoise ...........................   Passed    0.14 sec
+      Start  7: Link.ConfigurationsAndStatistics
+ 7/43 Test  #7: Link.ConfigurationsAndStatistics .......   Passed    0.41 sec
+      Start  8: Link.MultipathOracleAndDmrs
+ 8/43 Test  #8: Link.MultipathOracleAndDmrs ............   Passed    0.07 sec
+      Start  9: Reference.GoldAndCrc
+ 9/43 Test  #9: Reference.GoldAndCrc ...................   Passed    0.02 sec
+      Start 10: Reference.Constellations
+10/43 Test #10: Reference.Constellations ...............   Passed    0.02 sec
+      Start 11: Reference.LdpcAllLiftingSetsAndRvs
+11/43 Test #11: Reference.LdpcAllLiftingSetsAndRvs .....   Passed    0.05 sec
+      Start 12: Reference.SegmentationAndTbs
+12/43 Test #12: Reference.SegmentationAndTbs ...........   Passed    0.02 sec
+      Start 13: Boundaries.GraphAndSegmentation
+13/43 Test #13: Boundaries.GraphAndSegmentation ........   Passed    0.02 sec
+      Start 14: Boundaries.CrcDetectsSingleBitErrors
+14/43 Test #14: Boundaries.CrcDetectsSingleBitErrors ...   Passed    0.02 sec
+      Start 15: Receiver.RateRecoveryAndHarq
+15/43 Test #15: Receiver.RateRecoveryAndHarq ...........   Passed    0.04 sec
+      Start 16: Receiver.NoiseAndEqualizer
+16/43 Test #16: Receiver.NoiseAndEqualizer .............   Passed    0.03 sec
+      Start 17: Simd.ScalarMatchesDemodulator
+17/43 Test #17: Simd.ScalarMatchesDemodulator ..........   Passed    0.02 sec
+      Start 18: Simd.Avx512
+18/43 Test #18: Simd.Avx512 ............................***Skipped   0.02 sec
+      Start 19: Simd.Sve
+19/43 Test #19: Simd.Sve ...............................***Skipped   0.02 sec
+      Start 20: lesson_01_solution
+20/43 Test #20: lesson_01_solution .....................   Passed    0.01 sec
+      Start 21: lesson_02_solution
+21/43 Test #21: lesson_02_solution .....................   Passed    0.01 sec
+      Start 22: lesson_03_solution
+22/43 Test #22: lesson_03_solution .....................   Passed    0.01 sec
+      Start 23: lesson_04_solution
+23/43 Test #23: lesson_04_solution .....................   Passed    0.01 sec
+      Start 24: lesson_05_solution
+24/43 Test #24: lesson_05_solution .....................   Passed    0.01 sec
+      Start 25: lesson_06_solution
+25/43 Test #25: lesson_06_solution .....................   Passed    0.01 sec
+      Start 26: lesson_07_solution
+26/43 Test #26: lesson_07_solution .....................   Passed    0.02 sec
+      Start 27: lesson_08_solution
+27/43 Test #27: lesson_08_solution .....................   Passed    0.02 sec
+      Start 28: lesson_09_solution
+28/43 Test #28: lesson_09_solution .....................   Passed    0.02 sec
+      Start 29: lesson_10_solution
+29/43 Test #29: lesson_10_solution .....................   Passed    0.02 sec
+      Start 30: lesson_11_solution
+30/43 Test #30: lesson_11_solution .....................   Passed    0.01 sec
+      Start 31: lesson_12_solution
+31/43 Test #31: lesson_12_solution .....................   Passed    0.03 sec
+      Start 32: lesson_13_solution
+32/43 Test #32: lesson_13_solution .....................   Passed    0.00 sec
+      Start 33: lesson_14_solution
+33/43 Test #33: lesson_14_solution .....................   Passed    0.00 sec
+      Start 34: lesson_15_solution
+34/43 Test #34: lesson_15_solution .....................   Passed    0.00 sec
+      Start 35: lesson_16_solution
+35/43 Test #35: lesson_16_solution .....................   Passed    0.00 sec
+      Start 36: lesson_17_solution
+36/43 Test #36: lesson_17_solution .....................   Passed    0.31 sec
+      Start 37: lesson_18_solution
+37/43 Test #37: lesson_18_solution .....................   Passed    0.12 sec
+      Start 38: lesson_19_solution
+38/43 Test #38: lesson_19_solution .....................   Passed    0.00 sec
+      Start 39: lesson_20_solution
+39/43 Test #39: lesson_20_solution .....................   Passed    0.00 sec
+      Start 40: lesson_21_solution
+40/43 Test #40: lesson_21_solution .....................   Passed    0.04 sec
+      Start 41: lesson_22_solution
+41/43 Test #41: lesson_22_solution .....................   Passed    0.00 sec
+      Start 42: lesson_23_solution
+42/43 Test #42: lesson_23_solution .....................***Skipped   0.29 sec
+      Start 43: lesson_24_solution
+43/43 Test #43: lesson_24_solution .....................***Skipped   0.30 sec
+
+100% tests passed out of 43
+
+Total Test time (real) =   2.84 sec
+
+The following tests did not run:
+	 18 - Simd.Avx512 (Skipped)
+	 19 - Simd.Sve (Skipped)
+	 42 - lesson_23_solution (Skipped)
+	 43 - lesson_24_solution (Skipped)

@@ -1,0 +1,8 @@
+{
+  "cmake.useCMakePresets": "always",
+  "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+  "files.encoding": "utf8",
+  "C_Cpp.clang_format_style": "file",
+  "editor.formatOnSave": true,
+  "C_Cpp.clang_format_path": "${env:UCRT64_ROOT}/bin/clang-format.exe"
+}

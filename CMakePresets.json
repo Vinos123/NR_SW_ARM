@@ -1,0 +1,163 @@
+{
+  "version": 5,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 24,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "windows-debug",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/windows-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_C_COMPILER": "$env{UCRT64_ROOT}/bin/gcc.exe",
+        "CMAKE_CXX_COMPILER": "$env{UCRT64_ROOT}/bin/g++.exe",
+        "CMAKE_MAKE_PROGRAM": "$env{UCRT64_ROOT}/bin/ninja.exe"
+      },
+      "environment": {
+        "PATH": "$env{UCRT64_ROOT}/bin;$penv{PATH}"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "name": "windows-release",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/windows-release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_C_COMPILER": "$env{UCRT64_ROOT}/bin/gcc.exe",
+        "CMAKE_CXX_COMPILER": "$env{UCRT64_ROOT}/bin/g++.exe",
+        "CMAKE_MAKE_PROGRAM": "$env{UCRT64_ROOT}/bin/ninja.exe"
+      },
+      "environment": {
+        "PATH": "$env{UCRT64_ROOT}/bin;$penv{PATH}"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "name": "windows-avx512",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/windows-avx512",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "PUSCH_ENABLE_AVX512": "ON",
+        "CMAKE_C_COMPILER": "$env{UCRT64_ROOT}/bin/gcc.exe",
+        "CMAKE_CXX_COMPILER": "$env{UCRT64_ROOT}/bin/g++.exe",
+        "CMAKE_MAKE_PROGRAM": "$env{UCRT64_ROOT}/bin/ninja.exe"
+      },
+      "environment": {
+        "PATH": "$env{UCRT64_ROOT}/bin;$penv{PATH}"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "name": "linux-arm",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/linux-arm",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "linux-sve",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/linux-sve",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "PUSCH_ENABLE_SVE": "ON"
+      }
+    },
+    {
+      "name": "host-debug",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/host-debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows-debug",
+      "configurePreset": "windows-debug"
+    },
+    {
+      "name": "windows-release",
+      "configurePreset": "windows-release"
+    },
+    {
+      "name": "windows-avx512",
+      "configurePreset": "windows-avx512"
+    },
+    {
+      "name": "linux-arm",
+      "configurePreset": "linux-arm"
+    },
+    {
+      "name": "linux-sve",
+      "configurePreset": "linux-sve"
+    },
+    {
+      "name": "host-debug",
+      "configurePreset": "host-debug"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "windows-debug",
+      "configurePreset": "windows-debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "windows-release",
+      "configurePreset": "windows-release",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "windows-avx512",
+      "configurePreset": "windows-avx512",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "linux-arm",
+      "configurePreset": "linux-arm",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "linux-sve",
+      "configurePreset": "linux-sve",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "host-debug",
+      "configurePreset": "host-debug",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}
